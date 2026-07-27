@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Головна сторінка</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+ <header>
+   <div class="main"><a href="index.html">Головна</a></div>
+ </header>  
+ <main>
+ 
+   <div class="item">
+ 
+    <div class="filters">
+        <div class="filters__group">
+            <label for="filter-radius">Радіус (R)</label>
+            <select id="filter-radius">
+                <option value="">Всі радіуси</option>
+            </select>
+        </div>
+ 
+        <div class="filters__group filters__price-group">
+            <label>Ціна, ₴</label>
+            <div class="price-slider">
+                <div class="price-slider__track"></div>
+                <div class="price-slider__range"></div>
+                <input type="range" id="price-min" class="price-slider__input">
+                <input type="range" id="price-max" class="price-slider__input">
+            </div>
+            <div class="price-slider__values">
+                <span id="price-min-value"></span>
+                <span>—</span>
+                <span id="price-max-value"></span>
+            </div>
+        </div>
+ 
+        <button type="button" id="filter-reset" class="filters__reset">Скинути фільтри</button>
+    </div>
+ 
+    <div class="card__wrapper" id="card-wrapper">
+ 
+        <div class="card__all" data-price="9031.02" data-radius="20">
+           <div class="card__picture"><img src="img/1.webp" alt="Шина БЦИ-185"></div>
+           <div class="cards__name">Росава</div>
+           <h4 class="cards__sub__text">10.00R20 (280R508) БЦИ-185, 16 нс<br>Всесезонна, Дорожній<br>Навантаження: 146—3000кг / 143—2725кг<br>Швидкість: 110(K)</h4>
+           <div class="card__price">9 031,02 ₴</div>
+           <a href="buymore.html?id=1" class="buy">замовити</a> 
+        </div>
+ 
+        <div class="card__all" data-price="10772.04" data-radius="20">
+           <div class="card__picture"><img src="img/2.jpg" alt="Шина И-111АМ"></div>
+           <div class="cards__name">Росава</div>
+           <h4 class="cards__sub__text">11.00R20 (300R508) И-111АМ, 16 нс<br>Всесезонна, Дорожній<br>Навантаження: 150—3350кг / 146—3000кг<br>Швидкість: 110(K)</h4>
+           <div class="card__price">10 772,04 ₴</div>
+           <a href="buymore.html?id=2" class="buy">замовити</a> 
+        </div>
+ 
+        <div class="card__all" data-price="11864.04" data-radius="20">
+           <div class="card__picture"><img src="img/3.webp" alt="Шина ИД-304 У-4"></div>
+           <div class="cards__name">Росава</div>
+           <h4 class="cards__sub__text">12.00R20 (320R508) ИД-304 У-4, 16 нс<br>Всесезонна, Універсальний<br>Навантаження: 150—3350кг / 146—3000кг<br>Швидкість: J (100км/ч)</h4>
+           <div class="card__price">11 864,04 ₴</div>
+           <a href="buymore.html?id=3" class="buy">замовити</a> 
+        </div>
+ 
+        <div class="card__all" data-price="12203.04" data-radius="20">
+           <div class="card__picture"><img src="img/3.webp" alt="Шина ИД-304 У-4 18нс"></div>
+           <div class="cards__name">Росава</div>
+           <h4 class="cards__sub__text">12.00R20 (320R508) ИД-304 У-4, 18 нс<br>Всесезонна, Універсальний<br>Навантаження: 154—3750кг / 149—3250кг<br>Швидкість: J (100км/ч)</h4>
+           <div class="card__price">12 203,04 ₴</div>
+           <a href="buymore.html?id=4" class="buy">замовити</a> 
+        </div>
+ 
+        <div class="card__all" data-price="18091.02" data-radius="20">
+           <div class="card__picture"><img src="img/4.webp" alt="Шина КИ-113 8нс"></div>
+           <div class="cards__name">Росава</div>
+           <h4 class="cards__sub__text">12.00R20 (320R508) КИ-113, 8 нс<br>Всесезонна, Підв. прохідності<br>Навантаження: 135—2200кг / 132—2030кг<br>Швидкість: 110(K)</h4>
+           <div class="card__price">18 091,02 ₴</div>
+           <a href="buymore.html?id=5" class="buy">замовити</a> 
+        </div>
+ 
+        <div class="card__all" data-price="20277.00" data-radius="20">
+           <div class="card__picture"><img src="img/4.webp" alt="Шина КИ-113 10нс"></div>
+           <div class="cards__name">Росава</div>
+           <h4 class="cards__sub__text">12.00R20 (320R508) КИ-113, 10 нс TT<br>Всесезонна, Підв. прохідності<br>Навантаження: 140—2500кг<br>Швидкість: 110(K)</h4>
+           <div class="card__price">20 277,00 ₴</div>
+           <a href="buymore.html?id=6" class="buy">замовити</a> 
+        </div>
+ 
+        <div class="card__all" data-price="24443.04" data-radius="20">
+           <div class="card__picture"><img src="img/5.webp" alt="Шина ОИ-25АМ 14нс"></div>
+           <div class="cards__name">Росава</div>
+           <h4 class="cards__sub__text">14.00-20 ОИ-25АМ, 14 нс<br>Всесезонна, Підв. прохідності<br>Навантаження: 147—3075кг<br>Швидкість: G (85км/ч)</h4>
+           <div class="card__price">24 443,04 ₴</div>
+           <a href="buymore.html?id=7" class="buy">замовити</a> 
+        </div>
+ 
+        <div class="card__all" data-price="24079.02" data-radius="20">
+           <div class="card__picture"><img src="img/5.webp" alt="Шина ОИ-25АМ підкачка"></div>
+           <div class="cards__name">Росава</div>
+           <h4 class="cards__sub__text">14.00-20 ОИ-25АМ з підкачуванням, 10 нс<br>Всесезонна, Підв. прохідності<br>Навантаження: 145—2900кг<br>Швидкість: G (85км/ч)</h4>
+           <div class="card__price">24 079,02 ₴</div>
+           <a href="buymore.html?id=8" class="buy">замовити</a> 
+        </div>
+ 
+        <div class="card__all" data-price="6189.00" data-radius="20">
+           <div class="card__picture"><img src="img/6.webp" alt="Шина ИК-6АМ"></div>
+           <div class="cards__name">Росава</div>
+           <h4 class="cards__sub__text">8.25-20 (240-508) ИК-6АМ, 10 нс<br>Всесезонна, Універсальний<br>Навантаження: 125—1650кг / 122—1500кг<br>Швидкість: J (100км/ч)</h4>
+           <div class="card__price">6 189,00 ₴</div>
+           <a href="buymore.html?id=9" class="buy">замовити</a> 
+        </div>
+ 
+        <div class="card__all" data-price="7156.02" data-radius="20">
+           <div class="card__picture"><img src="img/7.png" alt="Шина ВС-57"></div>
+           <div class="cards__name">Росава</div>
+           <h4 class="cards__sub__text">8.25R20 (240-508R) ВС-57, У-2, нс.12<br>Всесезонна, Універсальний<br>Навантаження: 130—1900кг / 128—1800кг<br>Швидкість: 110(K)</h4>
+           <div class="card__price">7 156,02 ₴</div>
+           <a href="buymore.html?id=10" class="buy">замовити</a> 
+        </div>
+ 
+        <div class="card__all" data-price="6696.00" data-radius="20">
+           <div class="card__picture"><img src="img/8.jfif" alt="Шина У-2"></div>
+           <div class="cards__name">Росава</div>
+           <h4 class="cards__sub__text">8.25R20 У-2, 125/122К нс.10<br>Всесезонна, Універсальний<br>Навантаження: 125—1650кг / 122—1500кг<br>Швидкість: 110(K)</h4>
+           <div class="card__price">6 696,00 ₴</div>
+           <a href="buymore.html?id=11" class="buy">замовити</a> 
+        </div>
+ 
+        <div class="card__all" data-price="7722.00" data-radius="20">
+           <div class="card__picture"><img src="img/9.webp" alt="Шина И-Н142Б 12нс"></div>
+           <div class="cards__name">Росава</div>
+           <h4 class="cards__sub__text">9.00R20 (260R508) И-Н142Б, 12 нс<br>Всесезонна, Універсальний<br>Навантаження: 136—2240кг / 133—2060кг<br>Швидкість: J (100км/ч)</h4>
+           <div class="card__price">7 722,00 ₴</div>
+           <a href="buymore.html?id=12" class="buy">замовити</a> 
+        </div>
+ 
+        <div class="card__all" data-price="8027.04" data-radius="20">
+           <div class="card__picture"><img src="img/9.webp" alt="Шина И-Н142Б 14нс"></div>
+           <div class="cards__name">Росава</div>
+           <h4 class="cards__sub__text">9.00R20 (260R508) И-Н142Б, 14 нс<br>Всесезонна, Універсальний<br>Навантаження: 140—2500кг / 137—2300кг<br>Швидкість: 110(K)</h4>
+           <div class="card__price">8 027,04 ₴</div>
+           <a href="buymore.html?id=13" class="buy">замовити</a> 
+        </div>
+ 
+        <div class="card__all" data-price="7741.02" data-radius="20">
+           <div class="card__picture"><img src="img/10.webp" alt="Шина О-40БМ-1"></div>
+           <div class="cards__name">Росава</div>
+           <h4 class="cards__sub__text">9.00R20 (260R508) О-40БМ-1, 12 нс<br>Всесезонна, Універсальний<br>Навантаження: 136—2240кг / 133—2060кг<br>Швидкість: J (100км/ч)</h4>
+           <div class="card__price">7 741,02 ₴</div>
+           <a href="buymore.html?id=14" class="buy">замовити</a> 
+        </div>
+ 
+        <div class="card__all" data-price="8063.04" data-radius="20">
+           <div class="card__picture"><img src="img/11.webp" alt="Шина И-Н142Б 16нс"></div>
+           <div class="cards__name">Росава</div>
+           <h4 class="cards__sub__text">9.00R20 И-Н142Б, 144/142К 16 нс<br>Всесезонна, Універсальний<br>Навантаження: 144—2800кг / 142—2650кг<br>Швидкість: 110(K)</h4>
+           <div class="card__price">8 063,04 ₴</div>
+           <a href="buymore.html?id=15" class="buy">замовити</a> 
+        </div>
+ 
+    </div>
+ 
+    <p id="filter-empty" class="filters__empty" style="display:none;">Нічого не знайдено за обраними фільтрами.</p>
+ 
+   </div>
+ 
+ </main>
+      <footer>
+        <div class="bottom">
+            <div class="bottom__hav">
+     <section id="support">  <div class="info"><h5>інформація</h5></div></section> 
+        <div class="all__bottom">
+
+        <div class="phone">
+        <div class="number__phone">Номери</div>    
+        <div class="number"><h5>0505235780 - Дмитрич</h5> </div>
+        <div class="number"><h5>380673665626 - Паша</h5></div>
+        </div>
+        <div class="schedule">
+            <div class="when__work">графік роботи</div>
+        <div class="work__time"><h5> 24/7</h5></div>
+        </div>
+        <div class="sclad__adres">
+        <div class="sclad">Склад</div>
+        <div class="adres"><h5>м. Біла Церква вул Автовокзальна 1</h5></div>
+        </div>
+        </div>
+        </div>
+        </div>
+        <img src="img/unnamed.jpg" alt="Фон" class="bg-full-page">
+    </footer>
+ 
+    <script>
+    (function () {
+        const wrapper = document.getElementById('card-wrapper');
+        const cards = Array.from(wrapper.querySelectorAll('.card__all'));
+        const radiusSelect = document.getElementById('filter-radius');
+        const resetBtn = document.getElementById('filter-reset');
+        const emptyMsg = document.getElementById('filter-empty');
+ 
+        const minInput = document.getElementById('price-min');
+        const maxInput = document.getElementById('price-max');
+        const minValueLabel = document.getElementById('price-min-value');
+        const maxValueLabel = document.getElementById('price-max-value');
+        const rangeTrack = document.querySelector('.price-slider__range');
+ 
+        // Запасний варіант: якщо у картки нема data-radius/data-price,
+        // намагаємось витягнути їх із тексту (перше "слово" опису шини,
+        // напр. "10.00R20" -> 20, "14.00-20" -> 20)
+        function extractRadius(text) {
+            const firstToken = text.trim().split(/\s+/)[0];
+            const match = firstToken.match(/[R-](\d{1,3}(?:\.\d+)?)/i);
+            return match ? match[1] : null;
+        }
+ 
+        function extractPrice(text) {
+            const cleaned = text.replace(/[^\d,.\-]/g, '').replace(',', '.');
+            const value = parseFloat(cleaned);
+            return isNaN(value) ? null : value;
+        }
+ 
+        cards.forEach(card => {
+            if (!card.dataset.price) {
+                const priceEl = card.querySelector('.card__price');
+                const price = priceEl ? extractPrice(priceEl.textContent) : null;
+                if (price !== null) card.dataset.price = price;
+            }
+            if (!card.dataset.radius) {
+                const subTextEl = card.querySelector('.cards__sub__text');
+                const radius = subTextEl ? extractRadius(subTextEl.textContent) : null;
+                if (radius) card.dataset.radius = radius;
+            }
+        });
+ 
+        // ---- радіус ----
+        const radii = Array.from(new Set(cards.map(c => c.dataset.radius).filter(Boolean)))
+            .sort((a, b) => parseFloat(a) - parseFloat(b));
+ 
+        radii.forEach(r => {
+            const option = document.createElement('option');
+            option.value = r;
+            option.textContent = `R${r}`;
+            radiusSelect.appendChild(option);
+        });
+ 
+        // ---- ціновий повзунок: межі беремо з реальних цін карток ----
+        const prices = cards.map(c => parseFloat(c.dataset.price)).filter(p => !isNaN(p));
+        const priceMin = Math.floor(Math.min(...prices));
+        const priceMax = Math.ceil(Math.max(...prices));
+        const step = Math.max(1, Math.round((priceMax - priceMin) / 100));
+ 
+        [minInput, maxInput].forEach(input => {
+            input.min = priceMin;
+            input.max = priceMax;
+            input.step = step;
+        });
+        minInput.value = priceMin;
+        maxInput.value = priceMax;
+ 
+        function updateSliderUI() {
+            let minVal = parseFloat(minInput.value);
+            let maxVal = parseFloat(maxInput.value);
+ 
+            if (minVal > maxVal) {
+                [minVal, maxVal] = [maxVal, minVal];
+            }
+ 
+            minValueLabel.textContent = Math.round(minVal) + ' ₴';
+            maxValueLabel.textContent = Math.round(maxVal) + ' ₴';
+ 
+            const percentMin = ((minVal - priceMin) / (priceMax - priceMin)) * 100;
+            const percentMax = ((maxVal - priceMin) / (priceMax - priceMin)) * 100;
+ 
+            rangeTrack.style.left = percentMin + '%';
+            rangeTrack.style.right = (100 - percentMax) + '%';
+        }
+ 
+        function applyFilters() {
+            const radiusVal = radiusSelect.value;
+            const minVal = parseFloat(minInput.value);
+            const maxVal = parseFloat(maxInput.value);
+            let visibleCount = 0;
+ 
+            cards.forEach(card => {
+                const price = parseFloat(card.dataset.price);
+                const radius = card.dataset.radius;
+ 
+                let show = true;
+                if (radiusVal && radius !== radiusVal) show = false;
+                if (!isNaN(price) && (price < minVal || price > maxVal)) show = false;
+ 
+                card.style.display = show ? '' : 'none';
+                if (show) visibleCount++;
+            });
+ 
+            emptyMsg.style.display = visibleCount === 0 ? 'block' : 'none';
+        }
+ 
+        minInput.addEventListener('input', () => {
+            if (parseFloat(minInput.value) > parseFloat(maxInput.value)) {
+                minInput.value = maxInput.value;
+            }
+            updateSliderUI();
+            applyFilters();
+        });
+ 
+        maxInput.addEventListener('input', () => {
+            if (parseFloat(maxInput.value) < parseFloat(minInput.value)) {
+                maxInput.value = minInput.value;
+            }
+            updateSliderUI();
+            applyFilters();
+        });
+ 
+        radiusSelect.addEventListener('change', applyFilters);
+ 
+        resetBtn.addEventListener('click', () => {
+            radiusSelect.value = '';
+            minInput.value = priceMin;
+            maxInput.value = priceMax;
+            updateSliderUI();
+            applyFilters();
+        });
+ 
+        updateSliderUI();
+    })();
+    </script>
+</body>
+ 
+</html>
+ 

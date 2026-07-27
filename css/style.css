@@ -1,0 +1,1075 @@
+@charset "UTF-8";
+/* ==========================================================================
+   1. RESET (Скидання стандартних відступів браузера)
+   Стосується: всіх сторінок, застосовується глобально до всіх тегів
+   ========================================================================== */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+/* ==========================================================================
+   2. БАЗОВІ НАЛАШТУВАННЯ СТОРІНКИ (Дозволяють скрол вниз)
+   Стосується: всіх сторінок
+   ========================================================================== */
+html, body {
+  width: 100%;
+}
+
+body {
+  line-height: 1;
+}
+
+html {
+  scroll-behavior: smooth; /* плавний скрол по якорях (#about, #brands, #support) */
+}
+
+/* ==========================================================================
+   3. ШАПКА ТА СЛАЙДЕР
+   Стосується: index.html — шапка з лого-картинкою (img.logo) + меню (.list)
+   та банер-слайдер під шапкою (.slider-container).
+   Хедер зроблений fixed (100px заввишки), тому .slider-container нижче
+   і має margin-top: 100px — щоб контент не ховався під хедером.
+   Все, що стосується слайдера (слайди, стрілки), вкладено в
+   .slider-container, бо в HTML це все — його нащадки.
+   ========================================================================== */
+.head__nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100px;
+  box-sizing: border-box;
+  padding: 0 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+.head__nav .logo,
+.head__nav img {
+  height: 60px;
+  width: auto;
+  -o-object-fit: contain;
+     object-fit: contain;
+  display: block;
+}
+@media (max-width: 480px) {
+  .head__nav {
+    height: 70px;
+    padding: 0 16px;
+  }
+  .head__nav .logo,
+  .head__nav img {
+    height: 40px;
+  }
+}
+
+.list {
+  /* меню в шапці: "про нас" / "бренди" / "підтримка" (index.html) */
+  display: flex;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 28px;
+  margin-right: 20px;
+}
+.list .point {
+  color: rgba(0, 116, 224, 0.5);
+}
+.list .point:hover {
+  transform: scale(1.1);
+  transition: 0.3s;
+  color: rgb(179, 111, 9);
+}
+
+.header {
+  /* нотатка: цей клас .header не використовується в наданих HTML-файлах
+     (там є .head__nav, .slider-container) — лишаю без змін як є у файлі */
+  width: 100vw;
+  height: 100vh;
+  margin-bottom: 100px;
+  position: relative;
+  top: 50px;
+}
+
+/* Контейнер на весь екран (банер-слайдер, index.html) */
+.slider-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000; /* Чорний фон, поки вантажаться фото */
+  overflow: hidden; /* Слайди не вилазять за межі екрана */
+  margin-top: 100px;
+  /* Слайди */
+}
+.slider-container .slide {
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+.slider-container .slide.active {
+  display: block;
+}
+.slider-container .slide {
+  /* Картинка розтягується на весь екран без спотворення */
+}
+.slider-container .slide img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.slider-container {
+  /* Стрілочки навігації слайдера */
+}
+.slider-container .prev-btn, .slider-container .next-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  border: none;
+  padding: 20px;
+  cursor: pointer;
+  font-size: 24px;
+  border-radius: 50%;
+  transition: background-color 0.3s, transform 0.2s;
+  z-index: 10;
+}
+.slider-container .prev-btn:hover, .slider-container .next-btn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.slider-container .prev-btn {
+  left: 20px;
+}
+.slider-container .next-btn {
+  right: 20px;
+}
+@media (max-width: 480px) {
+  .slider-container {
+    margin-top: 70px; /* .head__nav на телефоні стає нижчим (70px) */
+  }
+}
+
+/* ==========================================================================
+   4. СЕКЦІЯ "ШИНИ" (плитка категорій)
+   Стосується: index.html — .decorationen (заголовок "ШИНИ") + .goods (10 карток-категорій:
+   Вантажні шини, Імпортні, Камери, Всесезонні, Зимові, Літні і т.д.)
+   ========================================================================== */
+.decorationen {
+  margin: 100px auto;
+  max-width: 1200px;
+  text-align: center;
+  font-family: sans-serif;
+}
+.decorationen h2 {
+  font-size: 3rem;
+  color: #333;
+}
+
+.goods {
+  max-width: 1200px;
+  margin: 0px auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.goods .cards:last-child {
+  grid-column: 2; /* остання картка (10-та, непарна) центрується по середній колонці */
+}
+.goods .cards .cards__name {
+  font-size: 20px; /* підпис під картинкою категорії, напр. "Вантажні шини" */
+}
+
+.main {
+  /* нотатка: клас .main використовується в HTML як обгортка посилання "Головна"
+     в хедері на сторінках каталогу товарів (index/buymore-подібні), не на index.html
+     з .head__nav */
+  max-width: 460px;
+  line-height: 120%;
+  font-size: 2rem;
+  margin-bottom: 150px;
+  padding-left: 20px;
+}
+
+@media (max-width: 599px) {
+  .goods {
+    grid-template-columns: 1fr; /* Перемикаємо сітку в 1 колонку */
+  }
+  .goods .cards:last-child {
+    grid-column: auto; /* Скидаємо центрування по 2-й колонці */
+  }
+}
+/* ==========================================================================
+   5. КНОПКА "buy" (замовити)
+   Стосується: карток товарів (.card__all) на сторінках каталогу — кнопка
+   веде на buymore.html?id=...
+   ========================================================================== */
+.buy {
+  display: inline-block; /* Щоб кнопка мала правильні відступи */
+  background: linear-gradient(135deg, #ff416c, #ff4b2b); /* Рожево-червоний градієнт */
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 12px 30px;
+  border-radius: 25px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(255, 75, 43, 0.3);
+  transition: all 0.3s ease;
+  margin: 15px auto 0 auto;
+  /* Ефект при наведенні мишкою */
+}
+.buy:hover {
+  background: linear-gradient(135deg, #ff4b2b, #ff416c); /* Перевертаємо градієнт */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 75, 43, 0.5);
+}
+.buy {
+  /* Ефект при самому натисканні (кліку) */
+}
+.buy:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 10px rgba(255, 75, 43, 0.3);
+}
+
+/* ==========================================================================
+   6. СІТКА ТОВАРІВ (card__wrapper) — desktop-first базове визначення
+   Стосується: сторінок каталогу товарів (document 3 і document 6) —
+   контейнер .card__wrapper з набором .card__all карток шин.
+   Нотатка: цей селектор ще раз перевизначається нижче в розділі 7
+   (mobile-first версія з медіа-запитами) — лишаю обидва визначення,
+   як було у вихідному файлі.
+   ========================================================================== */
+.card__wrapper {
+  max-width: 1200px;
+  margin: 0px auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* ==========================================================================
+   6a. ПАНЕЛЬ ФІЛЬТРІВ (радіус + ціна)
+   Стосується: сторінок каталогу товарів — .filters йде одразу над
+   .card__wrapper, дозволяє відфільтрувати картки за радіусом (R) шини
+   та діапазоном ціни. Логіка фільтрації — в <script> в самому HTML.
+   ========================================================================== */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto 24px auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 12px;
+  font-family: sans-serif;
+}
+.filters .filters__group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.filters .filters__group label {
+  font-size: 13px;
+  font-weight: bold;
+  color: #555;
+}
+.filters .filters__group select,
+.filters .filters__group input {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  background: #fff;
+  box-sizing: border-box;
+}
+.filters .filters__price-group {
+  min-width: 240px;
+}
+.filters .price-slider {
+  position: relative;
+  width: 100%;
+  height: 30px;
+}
+.filters .price-slider .price-slider__track,
+.filters .price-slider .price-slider__range {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 4px;
+  border-radius: 2px;
+}
+.filters .price-slider .price-slider__track {
+  width: 100%;
+  background: #ddd;
+}
+.filters .price-slider .price-slider__range {
+  background: #ff416c;
+}
+.filters .price-slider .price-slider__input {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  margin: 0;
+  background: none;
+  pointer-events: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+       appearance: none;
+}
+.filters .price-slider .price-slider__input::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+  background: transparent;
+}
+.filters .price-slider .price-slider__input::-webkit-slider-thumb {
+  pointer-events: auto;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #ff416c;
+  cursor: pointer;
+  border: 2px solid #fff;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+}
+.filters .price-slider .price-slider__input::-moz-range-track {
+  background: transparent;
+}
+.filters .price-slider .price-slider__input::-moz-range-thumb {
+  pointer-events: auto;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #ff416c;
+  cursor: pointer;
+  border: 2px solid #fff;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+}
+.filters .price-slider__values {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #555;
+  margin-top: 6px;
+}
+.filters .filters__reset {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #e0e0e0;
+  color: #333;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.filters .filters__reset:hover {
+  background: #d0d0d0;
+}
+@media (max-width: 600px) {
+  .filters {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 16px;
+  }
+  .filters .filters__reset {
+    width: 100%;
+  }
+}
+
+.filters__empty {
+  text-align: center;
+  color: #999;
+  font-size: 16px;
+  padding: 40px 0;
+  font-family: sans-serif;
+}
+
+/* ==========================================================================
+   7. СТОРІНКА ОФОРМЛЕННЯ ЗАМОВЛЕННЯ (checkout / кошик)
+   Стосується: buymore.html (document 7) — картка товару, кнопки оплати/продовження.
+   .checkout-product і .buttons-group вкладені в .checkout-container, бо в
+   HTML вони — його прямі нащадки; .btn-pay / .btn-continue вкладені в
+   .buttons-group.
+   Нотатка: у document 7 ці ж стилі також продубльовані в <style> прямо в HTML —
+   якщо підключаєш цей style.scss окремим файлом, той внутрішній <style> блок
+   в buymore.html можна прибрати, щоб не було подвійного визначення
+   ========================================================================== */
+.checkout-container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 30px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-family: sans-serif;
+}
+.checkout-container .checkout-product img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+.checkout-container .checkout-product h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333;
+}
+.checkout-container .checkout-product .price {
+  font-size: 22px;
+  font-weight: bold;
+  color: #ff416c;
+  margin-bottom: 30px;
+}
+.checkout-container {
+  /* Кнопки дій (Оплатити / Продовжити покупки) */
+}
+.checkout-container .buttons-group {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+}
+.checkout-container .buttons-group .btn {
+  padding: 12px 25px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 50px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: none;
+}
+.checkout-container .buttons-group {
+  /* Кнопка Оплатити (червоний градієнт) */
+}
+.checkout-container .buttons-group .btn-pay {
+  background: linear-gradient(135deg, #ff416c, #ff4b2b);
+  color: white;
+  box-shadow: 0 4px 15px rgba(255, 75, 43, 0.3);
+}
+.checkout-container .buttons-group .btn-pay:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 75, 43, 0.5);
+}
+.checkout-container .buttons-group {
+  /* Кнопка Продовжити покупки (сіра) */
+}
+.checkout-container .buttons-group .btn-continue {
+  background: #e0e0e0;
+  color: #333;
+}
+.checkout-container .buttons-group .btn-continue:hover {
+  background: #d0d0d0;
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   8. АДАПТИВ ДЛЯ КАРТОК ТОВАРІВ (mobile-first)
+   Стосується: .card__wrapper / .goods та вкладених .card__all / .cards
+   на всіх сторінках з каталогом товарів.
+   Медіа-запити для планшета (600px) і десктопа (1000px), що раніше були
+   окремим блоком в кінці файлу, тепер вкладені прямо сюди — все, що
+   стосується .card__wrapper/.goods, в одному місці.
+   ========================================================================== */
+.card__wrapper,
+.goods {
+  display: grid;
+  grid-template-columns: 1fr; /* 1 колонка на мобільних */
+  gap: 16px; /* Оптимальний відступ для пальців */
+  padding: 12px;
+  box-sizing: border-box;
+  /* Оптимізація самих карток (щоб контент не притискався до країв) */
+}
+.card__wrapper .card__all,
+.card__wrapper .cards,
+.goods .card__all,
+.goods .cards {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column; /* Вирівнюємо вміст вертикально */
+  justify-content: space-between;
+  height: 100%; /* Щоб картки в одному ряду були однакової висоти */
+  text-align: center;
+}
+.card__wrapper .card__all,
+.card__wrapper .cards,
+.goods .card__all,
+.goods .cards {
+  /* Оптимізація зображень (щоб не ламали верстку) */
+}
+.card__wrapper .card__all .card__picture img,
+.card__wrapper .card__all .cards__img img,
+.card__wrapper .cards .card__picture img,
+.card__wrapper .cards .cards__img img,
+.goods .card__all .card__picture img,
+.goods .card__all .cards__img img,
+.goods .cards .card__picture img,
+.goods .cards .cards__img img {
+  width: 100%;
+  height: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+  aspect-ratio: 4/3; /* Фіксована пропорція, щоб сайт не «стрибав» */
+  border-radius: 8px;
+  display: block;
+}
+.card__wrapper .card__all,
+.card__wrapper .cards,
+.goods .card__all,
+.goods .cards {
+  /* Шрифти для телефонів (щоб текст не був гігантським) */
+}
+.card__wrapper .card__all .cards__sub__text,
+.card__wrapper .card__all h4,
+.card__wrapper .cards .cards__sub__text,
+.card__wrapper .cards h4,
+.goods .card__all .cards__sub__text,
+.goods .card__all h4,
+.goods .cards .cards__sub__text,
+.goods .cards h4 {
+  font-size: 14px;
+  line-height: 1.4;
+  margin: 10px 0;
+}
+.card__wrapper .card__all .card__price,
+.card__wrapper .cards .card__price,
+.goods .card__all .card__price,
+.goods .cards .card__price {
+  font-size: 18px;
+  font-weight: bold;
+}
+.card__wrapper .card__all .cards__name,
+.card__wrapper .cards .cards__name,
+.goods .card__all .cards__name,
+.goods .cards .cards__name {
+  margin-top: 40px; /* нотатка: клас .cards__name використовується двічі у файлі —
+    тут перевизначається margin-top, властивість font-size
+    залишається та, що задана в розділі 4 вище */
+}
+.card__wrapper,
+.goods {
+  /* Планшет (від 600px) — товари: 2 колонки */
+}
+@media (min-width: 600px) {
+  .card__wrapper,
+  .goods {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 20px;
+    /* Трохи збільшуємо шрифти, бо екран більший */
+  }
+  .card__wrapper .card__all .cards__sub__text,
+  .card__wrapper .card__all h4,
+  .card__wrapper .cards .cards__sub__text,
+  .card__wrapper .cards h4,
+  .goods .card__all .cards__sub__text,
+  .goods .card__all h4,
+  .goods .cards .cards__sub__text,
+  .goods .cards h4 {
+    font-size: 15px;
+  }
+}
+.card__wrapper,
+.goods {
+  /* Десктоп (від 1000px) — товари: 3 колонки, центрування */
+}
+@media (min-width: 1000px) {
+  .card__wrapper,
+  .goods {
+    grid-template-columns: repeat(3, 1fr); /* 3 колонки на комп'ютері */
+    max-width: 1200px; /* Обмежуємо ширину сайту, щоб він не розповзався */
+    margin: 0 auto; /* Центруємо весь блок товарів на екрані ПК */
+  }
+}
+
+/* ==========================================================================
+   9. БЛОК "ПРО НАС" (about)
+   Стосується: секція id="about" на index.html — заголовок "ПРО НАС"
+   + текстовий блок .text__about з описом компанії
+   ========================================================================== */
+.about {
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+}
+.about h2 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.text__about {
+  padding: 40px 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.text__about p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #444;
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+/* ==========================================================================
+   10. БЛОК "БРЕНДИ" (brands-section)
+   Стосується: секція id="brands" на index.html — сітка логотипів
+   брендів (Rosava, Premiorri, Onyx і т.д.) з overlay-описом при наведенні.
+   Все, що стосується самих карток брендів (.brand-card, overlay, hover-ефекти),
+   вкладено в .brands-grid; медіа-запити для кількості колонок на планшеті/
+   телефоні — теж прямо тут.
+   ========================================================================== */
+.brands-section {
+  padding: 40px 20px;
+}
+.brands-section h2 {
+  font-size: 26px;
+  margin-bottom: 25px;
+  color: #333;
+  text-align: center;
+}
+
+.brands-container {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+/* На десктопі — 7 колонок, картки більші */
+.brands-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 16px;
+}
+.brands-grid .brand-card {
+  position: relative;
+  aspect-ratio: 1/1;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  cursor: pointer;
+}
+.brands-grid .brand-card img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  padding: 18px;
+  box-sizing: border-box;
+  margin-bottom: 0 !important;
+  transition: transform 0.3s, filter 0.3s;
+}
+.brands-grid .brand-card {
+  /* Overlay-текст, що з'являється при наведенні на лого бренду */
+}
+.brands-grid .brand-card .brand-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: rgba(74, 31, 31, 0.88);
+  opacity: 0;
+  transition: opacity 0.3s;
+  padding: 16px;
+  text-align: center;
+}
+.brands-grid .brand-card .brand-overlay .brand-name {
+  color: #fff;
+  font-weight: bold;
+  font-size: 20px;
+}
+.brands-grid .brand-card .brand-overlay .brand-desc {
+  color: #f1e6e6;
+  font-size: 13px;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.brands-grid .brand-card:hover img {
+  transform: scale(1.05);
+  filter: brightness(0.7);
+}
+.brands-grid .brand-card:hover .brand-overlay {
+  opacity: 1;
+}
+.brands-grid {
+  /* Планшет — бренди: 4 картки в ряд */
+}
+@media (max-width: 992px) {
+  .brands-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+.brands-grid {
+  /* Малий планшет — бренди: 3 картки в ряд */
+}
+@media (max-width: 768px) {
+  .brands-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .brands-grid .brand-card .brand-overlay .brand-name {
+    font-size: 17px;
+  }
+  .brands-grid .brand-card .brand-overlay .brand-desc {
+    font-size: 13px;
+  }
+}
+.brands-grid {
+  /* Телефон — бренди: 2 картки в ряд */
+}
+@media (max-width: 480px) {
+  .brands-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .brands-grid .brand-card .brand-overlay .brand-name {
+    font-size: 16px;
+  }
+  .brands-grid .brand-card .brand-overlay .brand-desc {
+    font-size: 13px;
+    -webkit-line-clamp: 4;
+    display: -webkit-box;
+  }
+}
+
+/* ==========================================================================
+   11. ФУТЕР (bottom)
+   Стосується: <footer> на всіх сторінках — блок "інформація" / "Номери" /
+   "графік роботи" / "Склад" (.phone, .schedule, .sclad__adres).
+   Медіа-запити для планшета/телефону вкладені прямо в .bottom__hav і
+   .when__work/.number__phone/.sclad — все футерне в одному місці.
+   ========================================================================== */
+.bottom .bottom__hav {
+  margin-bottom: 100px;
+  letter-spacing: 0.5px;
+  line-height: 1.5;
+  font-size: 18px;
+  font-weight: 200;
+  background-color: #ddd;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.bottom .bottom__hav .all__bottom {
+  display: flex;
+  flex-direction: row;
+  gap: 70px;
+  justify-content: center;
+}
+.bottom .bottom__hav .info h5 {
+  font-size: 30px;
+  margin-bottom: 50px;
+  justify-content: center;
+  display: flex;
+  font-weight: 600;
+}
+.bottom .bottom__hav {
+  /* Планшет */
+}
+@media (max-width: 900px) {
+  .bottom .bottom__hav {
+    margin-bottom: 60px;
+    font-size: 16px;
+  }
+  .bottom .bottom__hav .all__bottom {
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+  .bottom .bottom__hav .info h5 {
+    font-size: 24px;
+    margin-bottom: 60px;
+  }
+}
+.bottom .bottom__hav {
+  /* Телефон — футер лишається в 1 рядок (row), а не переносить в стовпчик */
+}
+@media (max-width: 480px) {
+  .bottom .bottom__hav {
+    margin-bottom: 40px;
+    font-size: 14px;
+  }
+  .bottom .bottom__hav .all__bottom {
+    flex-direction: row;
+    gap: 12px;
+    justify-content: space-between;
+    align-items: flex-start;
+    text-align: center;
+  }
+  .bottom .bottom__hav .info h5 {
+    font-size: 20px;
+    margin-bottom: 32px;
+  }
+}
+.bottom .when__work,
+.bottom .number__phone,
+.bottom .sclad {
+  color: rgb(141, 41, 71);
+  font-size: 24px;
+  border: 1px solid rgba(107, 22, 22, 0.1);
+}
+@media (max-width: 900px) {
+  .bottom .when__work,
+  .bottom .number__phone,
+  .bottom .sclad {
+    font-size: 20px;
+  }
+}
+@media (max-width: 480px) {
+  .bottom .when__work,
+  .bottom .number__phone,
+  .bottom .sclad {
+    font-size: 12px;
+    border: none; /* рамка на дрібному шрифті виглядатиме затісно */
+    padding: 0;
+  }
+}
+@media (max-width: 480px) {
+  .bottom .number h5,
+  .bottom .work__time h5,
+  .bottom .adres h5 {
+    font-size: 11px;
+  }
+}
+
+/* Скидаємо стандартні відступи браузера */
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden; /* Прибирає горизонтальну прокрутку, якщо вона з'явиться */
+}
+
+.bg-full-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  z-index: -1; /* Опускає картинку під усі елементи */
+  pointer-events: none; /* Щоб картинка не заважала клікати по кнопках/посиланнях */
+}
+
+/* Обгортка для сітки карток */
+/* Базові стилі та Hover-ефекти для картки */
+.card__all {
+  position: relative;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  /* Плавний перехід для анімацій */
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease;
+  /* Блок із картинкою */
+}
+.card__all .card__picture {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.card__all .card__picture img {
+  transition: transform 0.4s ease; /* Плавний зум фото */
+}
+.card__all {
+  /* Текстові блоки */
+}
+.card__all .cards__name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+.card__all .cards__sub__text {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #1e293b;
+  line-height: 1.4;
+  margin: 0 0 15px 0;
+}
+.card__all .card__price {
+  font-size: 1.35rem;
+  color: #0f172a;
+  margin-top: auto;
+  margin-bottom: 15px;
+}
+.card__all {
+  /* Кнопка "Замовити" */
+}
+.card__all .buy {
+  background-color: #2563eb;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+.card__all .buy:hover {
+  background-color: #1d4ed8;
+}
+.card__all .buy:active {
+  transform: scale(0.97);
+}
+.card__all {
+  /* =========================================
+     HOVER ЕФЕКТ ДЛЯ КАРТКИ
+     ========================================= */
+}
+.card__all:hover {
+  transform: translateY(-8px); /* Картка плавно піднімається */
+  border-color: transparent;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); /* Глибока м'яка тінь */
+  /* Збільшення картинки товару */
+}
+.card__all:hover .card__picture img {
+  transform: scale(1.08);
+}
+.card__all:hover {
+  /* Анімація кнопки під час наведення на картку */
+}
+.card__all:hover .buy {
+  background-color: #1d4ed8;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
