@@ -1505,3 +1505,90 @@ body, html {
     font-size: 1.5rem;
   }
 }
+.tire-search-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0 30px 0;
+}
+
+.tire-search-input {
+  width: 100%;
+  max-width: 480px;
+  padding: 14px 20px;
+  border: 2px solid #ddd;
+  border-radius: 30px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.tire-search-input:focus {
+  border-color: #ff416c;
+}
+
+.search-results {
+  display: none;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.search-results.active {
+  display: flex;
+}
+
+.search-result-card {
+  width: 220px;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.search-result-card img {
+  width: 100%;
+  height: 140px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.search-result-name {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8px;
+  min-height: 55px;
+}
+
+.search-result-price {
+  color: #ff416c;
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.search-result-buy {
+  display: inline-block;
+  background: #4a1f1f;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background 0.3s;
+}
+
+.search-result-buy:hover {
+  background: #6b2b2b;
+}
+
+.no-results {
+  color: gray;
+  text-align: center;
+  width: 100%;
+}
