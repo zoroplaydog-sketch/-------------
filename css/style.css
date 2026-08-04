@@ -1592,3 +1592,86 @@ body, html {
   text-align: center;
   width: 100%;
 }
+
+.tire-search-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.tire-search-icon {
+  position: absolute;
+  left: 14px;
+  color: #888;
+  pointer-events: none;
+}
+
+.tire-search-input {
+  padding-left: 42px; /* щоб текст не наїжджав на іконку */
+}
+
+#scrollTopBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: none;
+  background: #1a1a1a;
+  color: #fff;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.25s, transform 0.25s;
+  z-index: 999;
+}
+
+#scrollTopBtn.show {
+  display: flex;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Показувати тільки на телефонах */
+@media (min-width: 769px) {
+  #scrollTopBtn {
+    display: none !important;
+  }
+}
+.tire-search-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  max-width: 500px;
+  margin: 0 auto 20px;
+}
+
+.tire-search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 12px 16px;
+  font-size: 15px;
+  background: transparent;
+}
+
+.search-divider {
+  width: 1px;
+  height: 24px;
+  background: #ddd;
+  flex-shrink: 0;
+}
+
+.tire-search-icon {
+  flex-shrink: 0;
+  color: #888;
+  margin: 0 14px;
+}
