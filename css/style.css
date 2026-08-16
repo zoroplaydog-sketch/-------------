@@ -1638,3 +1638,67 @@ body, html {
     display: none !important;
   }
 }
+.cards a {
+  display: block;
+  text-decoration: none;
+  color: inherit; /* Зберігає ваш колір тексту */
+}
+
+/* Контейнер, який фіксується при прокручуванні */
+.main {
+  position: fixed;
+  top: 20px; /* Відступ від верху екрана */
+  left: 20px; /* Відступ зліва (можна змінити на right: 20px) */
+  z-index: 1000; /* Гарантує, що кнопка буде поверх інших елементів */
+}
+
+/* Дизайн кнопки-посилання */
+.main a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  /* Сучасний шрифт та текст */
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #1e293b;
+  text-decoration: none;
+  letter-spacing: 0.3px;
+  /* Ефект матового скла (Glassmorphism) */
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  /* Закруглення та рамка */
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  /* М'яка тінь */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  /* Плавність анімації */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Ефекти при наведенні курсора */
+.main a:hover {
+  background: #2563eb; /* Синій акцентний колір */
+  color: #ffffff; /* Білий колір тексту */
+  transform: translateY(-2px); /* Легкий підйом вгору */
+  box-shadow: 0 12px 28px rgba(37, 99, 235, 0.3); /* Яскравіша тінь */
+}
+
+/* Ефект при натисканні */
+.main a:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+}
+
+/* Для всіх екранів ширше 1024px кнопка буде видима, 
+   а на телефонах та планшетах (до 1024px) — прихована */
+@media (max-width: 1024px) {
+  .main {
+    display: none !important;
+  }
+}
+html {
+  scroll-behavior: smooth;
+}
