@@ -1699,6 +1699,3 @@ body, html {
     display: none !important;
   }
 }
-html {
-  scroll-behavior: smooth;
-}
